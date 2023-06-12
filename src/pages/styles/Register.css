@@ -1,0 +1,141 @@
+body{
+    /* background-color: #DFFFFB; */
+    /* background-color: #1DCFBB; */
+    /* background-color: #02473F; */
+    /* background-color: #9FFEF3; */
+    background-color: #14675E;
+}
+
+.background{
+    display: flex;
+}
+
+.secondDiv{
+    margin-top: 2%;
+    width: 40%;
+    height: 600px;
+    margin-left: 15%;
+    /* border-radius: 50%; */
+    /* border: solid 1px red; */
+}
+
+.happyGirl{
+    border-radius: 50%;
+    height: 500px;
+}
+
+.register{
+    margin-left: 5%;
+    display: block;
+}
+
+.registerText{
+    margin-top: 3%;
+}
+
+.converseLogo{
+    width: 150px;
+    height: 100px;
+}
+
+.innerFormContainer{
+    margin-left: 5%;
+
+}
+.formContainer{
+    border-radius: 5%;
+    margin-left: 10%;
+    margin-top: 1%;
+    width: 28%;
+    background-color: white;
+    height: 690px;
+}
+
+.flex{
+    display: flex;
+}
+
+.input{
+    width: 360px;
+    height: 30px;
+}
+
+.genderContainer{
+    display: flex;
+    
+}
+
+.radio{
+    border: solid 1px #1DCFBB;
+    width: 110px;
+    margin: 2%;
+}
+
+.inputRadio{
+    width: 20px;
+    height: 25px;
+}
+
+.country{
+    width: 360px;
+    height: 30px;
+}
+
+.radioLabel{
+    margin-bottom: 30%;
+}
+
+.submitButton{
+    width: 360px;
+    height: 40px;
+    background-color: #14AE9D;
+    border: none;
+    color: white;
+    font-size: 20px;
+    border-radius: 5%;
+    cursor: pointer !important;
+}
+
+
+.googleButton {
+    width: 360px !important;
+    height: 40px !important;
+    background-color: #14AE9D !important; 
+    border: none !important;
+    color: white !important;
+    font-size: 20px !important;
+    border-radius: 5% !important;
+    text-align: center !important;
+    align-items: center !important;
+    display: flex !important;
+    cursor: pointer !important;
+  }
+  
+
+.error{
+    color: red;
+}
+
+.carousel-image {
+    width: 400px;
+    height: 400px;
+    object-fit: contain;
+  }
+
+  .converse{
+    /* color:  #9FFEF3; */
+    /* color: #61BDB3; */
+    /* color: #1DCFBB; */
+    /* color: #DFFFFB; */
+    /* color: #14AE9D; */
+    /* color: #14675E; */
+    /* color: #02473F; */
+  }
+
+  /* .hash{
+    background-color: #2BEDD7;
+    border-radius: 50%;
+  width: 200px; 
+  height: 200px
+  }
+   */
