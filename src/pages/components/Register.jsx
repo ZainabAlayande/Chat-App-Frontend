@@ -2,77 +2,75 @@ import { React, useState } from "react";
 import "../styles/Register.css";
 import { useFormik } from "formik";
 import { GoogleLogin } from "react-google-login";
-import { Carousel } from 'react-responsive-carousel';
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import Picture from '../../assets/images/chat 1.jpg'
-import PictureTwo from '../../assets/images/chat 2.jpg'
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import Picture from "../../assets/images/chat 1.jpg";
+import PictureTwo from "../../assets/images/chat 2.jpg";
 
-
-
-const clientId = "255159867530-ki9qm6gcrdiqep63mv57i995h50echpa.apps.googleusercontent.com";
+const clientId =
+  "255159867530-ki9qm6gcrdiqep63mv57i995h50echpa.apps.googleusercontent.com";
 
 const Register = () => {
   const formik = useFormik({
     initialValues: {
-        fullName: "",
-        email: "",
-        password: "",
-        confirmPassword: "",
-        gender: "",
-        country: ""
+      username: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+      gender: "",
+      country: "",
     },
 
-    onSubmit: values => {
-        console.log("Form Values: ", values)
+    onSubmit: (values) => {
+      console.log("Form Values: ", values);
     },
 
-    validate: values => {
-        let errors = {}
+    validate: (values) => {
+      let errors = {};
 
-        if(!values.fullName) {
-            errors.fullName = "  *Required"
-        }
+      if (!values.username) {
+        errors.username = "  *Required";
+      }
 
-        if(!values.email) {
-            errors.email = "  *Required"
-        } else if(!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-            errors.email = "  Invalid email format"
-        }
+      if (!values.email) {
+        errors.email = "  *Required";
+      } else if (
+        !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
+      ) {
+        errors.email = "  Invalid email format";
+      }
 
-        if(!values.password) {
-            errors.password = "  *Required"
-        }
+      if (!values.password) {
+        errors.password = "  *Required";
+      }
 
-        if(!values.password) {
-            errors.confirmPassword = "  *Required"
-        } else if(values.confirmPassword != values.password) {
-            errors.confirmPassword = "  Password does not match"
-        }
+      if (!values.password) {
+        errors.confirmPassword = "  *Required";
+      } else if (values.confirmPassword != values.password) {
+        errors.confirmPassword = "  Password does not match";
+      }
 
-        if(!values.gender) {
-            errors.gender = "  *Required"
-        }
+      if (!values.gender) {
+        errors.gender = "  *Required";
+      }
 
-        if(!values.country) {
-            errors.country = "  *Required"
-        }
+      if (!values.country) {
+        errors.country = "  *Required";
+      }
 
-        return errors
-    }
+      return errors;
+    },
+  });
 
-  })
-
-  console.log("Visited Fields: ", formik.touched)
+  console.log("Visited Fields: ", formik.touched);
 
   const onSuccess = (response) => {
-    console.log("SIGN UP SUCCESS! Current user: ", response.profileObj)
-  }
+    console.log("SIGN UP SUCCESS! Current user: ", response.profileObj);
+  };
 
   const onFailure = (response) => {
-    console.log("SIGN UP FAILED! response: ", response)
-  }
-
-  
+    console.log("SIGN UP FAILED! response: ", response);
+  };
 
   return (
     <div className="background">
@@ -80,47 +78,49 @@ const Register = () => {
         <div className="register">
           <h2 className="registerText">Register</h2>
           <p>
-            Already have an account? <a href="">Log In</a>
+            Already have an account? <a href="http://localhost:3001/login">Log In</a>
           </p>
-         
         </div>
 
         <div className="innerFormContainer">
           <form onSubmit={formik.handleSubmit}>
             <div>
-             <div className="flex"> 
+              <div className="flex">
                 <div>
-                <label htmlFor="">Full Name</label>
+                  <label htmlFor="">Username</label>
                 </div>
 
                 <div>
-                {formik.touched.fullName && formik.errors.fullName ? (<div className="error">{formik.errors.fullName}</div>) : null}
-                </div>             
-             </div>
-              
+                  {formik.touched.username && formik.errors.username ? (
+                    <div className="error">{formik.errors.username}</div>
+                  ) : null}
+                </div>
+              </div>
+
               <input
                 type="text"
                 placeholder=""
                 className="input"
-                value={formik.values.fullName}
-                name="fullName"
+                value={formik.values.username}
+                name="username"
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
               />
             </div>{" "}
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <div>
-             <div className="flex">
+              <div className="flex">
                 <div>
-                <label htmlFor="nameInput">Email Address</label>
+                  <label htmlFor="nameInput">Email Address</label>
                 </div>
 
                 <div>
-              {formik.touched.email && formik.errors.email ? (<div className="error">{formik.errors.email}</div>) : null}
+                  {formik.touched.email && formik.errors.email ? (
+                    <div className="error">{formik.errors.email}</div>
+                  ) : null}
                 </div>
+              </div>
 
-             </div>
-             
               <input
                 type="email"
                 placeholder=""
@@ -133,17 +133,18 @@ const Register = () => {
             </div>{" "}
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <div>
-             <div className="flex">
+              <div className="flex">
                 <div>
-                <label htmlFor="nameInput">Password</label>
+                  <label htmlFor="nameInput">Password</label>
                 </div>
 
                 <div>
-              {formik.touched.password && formik.errors.password ? (<div className="error">{formik.errors.password}</div>) : null}
+                  {formik.touched.password && formik.errors.password ? (
+                    <div className="error">{formik.errors.password}</div>
+                  ) : null}
                 </div>
+              </div>
 
-             </div>
-              
               <input
                 type="password"
                 placeholder=""
@@ -156,17 +157,19 @@ const Register = () => {
             </div>{" "}
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <div>
-             <div className="flex">
+              <div className="flex">
                 <div>
-                <label htmlFor="nameInput">Confirm Password  </label>
+                  <label htmlFor="nameInput">Confirm Password </label>
                 </div>
 
                 <div>
-              {formik.touched.confirmPassword && formik.errors.confirmPassword ? (<div className="error">{formik.errors.confirmPassword}</div>) : null}
+                  {formik.touched.confirmPassword &&
+                  formik.errors.confirmPassword ? (
+                    <div className="error">{formik.errors.confirmPassword}</div>
+                  ) : null}
                 </div>
+              </div>
 
-             </div>
-              
               <input
                 type="text"
                 placeholder=""
@@ -179,17 +182,18 @@ const Register = () => {
             </div>{" "}
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <div>
-             <div className="flex">
+              <div className="flex">
                 <div>
-                <label>Select your Gender</label>
+                  <label>Select your Gender</label>
                 </div>
 
                 <div>
-                  {formik.touched.gender && formik.errors.gender ? (<div className="error">{formik.errors.gender}</div>) : null}
+                  {formik.touched.gender && formik.errors.gender ? (
+                    <div className="error">{formik.errors.gender}</div>
+                  ) : null}
                 </div>
+              </div>
 
-             </div>
-              
               <div className="genderContainer">
                 <div className="radio">
                   <input
@@ -239,15 +243,17 @@ const Register = () => {
             </div>
             <br />
             <div>
-             <div className="flex">
+              <div className="flex">
                 <div>
-                <label htmlFor="nameInput">Country</label>
+                  <label htmlFor="nameInput">Country</label>
                 </div>
 
                 <div>
-              { formik.touched.country && formik.errors.country ? (<div className="error">{formik.errors.country}</div>) : null}
+                  {formik.touched.country && formik.errors.country ? (
+                    <div className="error">{formik.errors.country}</div>
+                  ) : null}
                 </div>
-             </div>
+              </div>
 
               <select
                 className="country"
@@ -278,50 +284,53 @@ const Register = () => {
               </select>
             </div>{" "}
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <div> 
+            <div>
               <input type="submit" value="Submit" className="submitButton" />
               <br />
               <br />
             </div>
-            <div >
+            <div>
               {/* <button className="googleButton">Continue with Google</button> */}
-                <GoogleLogin 
-                    clientId={clientId}
-                    buttonText="Continue with Google"
-                    onSuccess={onSuccess}
-                    onFailure={onFailure}
-                    className="googleButton"
-                    cookiePolicy={"single_host_origin"}
-                    isSignedIn={true}
-                />
+              <GoogleLogin
+                clientId={clientId}
+                buttonText="Continue with Google"
+                onSuccess={onSuccess}
+                onFailure={onFailure}
+                className="googleButton"
+                cookiePolicy={"single_host_origin"}
+                isSignedIn={true}
+              />
             </div>
           </form>
         </div>
       </div>
 
       <div className="secondDiv">
-        <img src={require("../../assets/images/happy girl 1.jpeg")} className="happyGirl"/>
+        <img
+          src={require("../../assets/images/happy girl 1.jpeg")}
+          className="happyGirl"
+        />
 
         <div>
-            <h2 className="converse"> <span style={{color: "#9FFEF3"}}> Join Converse,</span> where conversations come alive.  
-                Sign up now and unlock a world of limitless communication, possibilities and connections"</h2>
+          <h2 className="converse">
+            {" "}
+            <span style={{ color: "#9FFEF3" }}> Join Converse,</span> where
+            conversations come alive. Sign up now and unlock a world of
+            limitless communication, possibilities and connections"
+          </h2>
         </div>
-    </div>
-
-
+      </div>
     </div>
   );
 };
 
 export default Register;
 
-
-
-  {/* <Carousel>
+{
+  /* <Carousel>
       <img src={require("../../assets/images/chat 1.jpg")} className="carousel-image"/>
       <img src={require("../../assets/images/chat 2.jpg")} className="carousel-image"/>
       <img src={require("../../assets/images/chat 1.jpg")}  className="carousel-image"/>
       <img src={require("../../assets/images/chat 2.jpg")}  className="carousel-image"/>
-  </Carousel> */}
-
-  
+  </Carousel> */
+}
