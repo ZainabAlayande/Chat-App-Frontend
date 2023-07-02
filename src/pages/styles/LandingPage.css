@@ -1,0 +1,42 @@
+body{
+    background-color: aliceblue;
+}
+
+.upperLayer{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.5%;
+}
+
+.converseText{
+    margin-left: 5%;
+    display: flex;
+}
+
+.login{
+    margin-right: 5%;
+}
+
+.converseLogo{
+    width: 80px;
+    height: 80px;
+}
+
+.secondContainer{
+    margin-top: 10%;
+}
+
+button {
+    width: 150px;
+    height: 50px;
+    border: none;
+    background-color: aqua;
+    cursor: pointer;
+    font-size: large;
+    font-weight: 700;
+}
+
+
+button:hover {
+    background-color: white;
+}

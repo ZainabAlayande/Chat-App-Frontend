@@ -1,0 +1,35 @@
+body{
+    background-color: white;
+}
+
+.upperContainer{
+    display: flex;
+    justify-content: space-between;
+}
+
+.logoText{
+    display: flex;
+    margin-left: 3%;
+}
+
+.homeLink{
+    border: solid 1px red;
+}
+
+.completeRegistration{
+    margin-top: 5%;
+}
+
+.innerFormDiv{
+    background-color: lightblue;
+    height: 340px;
+    width: 700px;
+    margin-left: 26%;
+    border-radius: 5%;
+}
+
+.submitButton{
+    width: 130px;
+    height: 40px;
+    border-radius: 25%;
+}

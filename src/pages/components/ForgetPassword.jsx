@@ -1,5 +1,8 @@
 import React from 'react'
 import { useFormik } from "formik";
+import Picture from "../../assets/images/converseFive.jpg";
+import "../styles/ForgetPassword.css";
+
 
 
 const ForgetPassword = () => {
@@ -26,9 +29,33 @@ const ForgetPassword = () => {
 
 
   return (
-    <div>
+    <div className='generalContainer'>
+      <div className="upperLayer">
+            <div className="converseText">
+                <div>
+                <img src={Picture} alt="Not found" className="converseLogo"></img>
+                </div>
+               
+               <div>
+               <h1 className="converse">CONVERSE</h1>
+               </div>
+            </div>
 
-<div>   
+            <div className="login">
+                <div className='home'>
+                  <a href='http://localhost:3001/'>Home</a>
+                </div>
+                <div className='register'> 
+                  <a href='http://localhost:3001/register'>Register</a>
+                </div>
+            </div>
+        </div>
+
+<div className='formContainer'>   
+
+<div className='loginText'>
+            <h2 className='h1'>FORGOT PASSWORD</h2>
+            </div>
             <div>
                   {formik.touched.email && formik.errors.email ? (
                     <div className="error">{formik.errors.email}</div>
@@ -36,13 +63,10 @@ const ForgetPassword = () => {
                 </div>
               
               <div>
-              <div>
-                <label htmlFor=''>Email Address</label>
-                </div>
-
+                <br /><br />
               <input
                 type="email"
-                placeholder=""
+                placeholder="Enter email address for password reset"
                 className="input"
                 value={formik.values.email}
                 name="email"
@@ -50,10 +74,11 @@ const ForgetPassword = () => {
                 onChange={formik.handleChange}
               />
             </div>{" "}
-            </div>
-
+            <br /><br />
             <div>
-                <button>CONFIRM</button>
+                <button>SEND LINK</button>
+            </div>
+            <br />
             </div>
 
     </div>

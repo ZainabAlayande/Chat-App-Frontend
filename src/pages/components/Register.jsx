@@ -1,24 +1,27 @@
-import { React, useState } from "react";
 import "../styles/Register.css";
+import { React } from "react";
 import { useFormik } from "formik";
 import { GoogleLogin } from "react-google-login";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import Picture from "../../assets/images/chat 1.jpg";
-import PictureTwo from "../../assets/images/chat 2.jpg";
+import Picture from "../../assets/images/converseFive.jpg";
+import axios from "axios";
+
 
 const clientId =
   "255159867530-ki9qm6gcrdiqep63mv57i995h50echpa.apps.googleusercontent.com";
 
 const Register = () => {
+
+  const confirmOTPPage = () => {
+    window.location.href = "http://localhost:3000/otpsent";
+
+  }
+
   const formik = useFormik({
     initialValues: {
-      username: "",
       email: "",
-      password: "",
-      confirmPassword: "",
-      gender: "",
-      country: "",
+      username: "",
     },
 
     onSubmit: (values) => {
@@ -40,79 +43,43 @@ const Register = () => {
         errors.email = "  Invalid email format";
       }
 
-      if (!values.password) {
-        errors.password = "  *Required";
-      }
-
-      if (!values.password) {
-        errors.confirmPassword = "  *Required";
-      } else if (values.confirmPassword != values.password) {
-        errors.confirmPassword = "  Password does not match";
-      }
-
-      if (!values.gender) {
-        errors.gender = "  *Required";
-      }
-
-      if (!values.country) {
-        errors.country = "  *Required";
-      }
-
       return errors;
     },
   });
 
   console.log("Visited Fields: ", formik.touched);
 
-  const onSuccess = (response) => {
-    console.log("SIGN UP SUCCESS! Current user: ", response.profileObj);
-  };
-
-  const onFailure = (response) => {
-    console.log("SIGN UP FAILED! response: ", response);
-  };
 
   return (
     <div className="background">
-      <div className="formContainer">
-        <div className="register">
-          <h2 className="registerText">Register</h2>
-          <p>
-            Already have an account? <a href="http://localhost:3001/login">Log In</a>
-          </p>
+
+      <div className="upperLayer">
+            <div className="converseText">
+                <div>
+                <img src={Picture} alt="Not found" className="converseLogo"></img>
+                </div>
+               
+               <div>
+               <h1 className="converse">CONVERSE</h1>
+               </div>
+            </div>
+
+            <div className='home'>
+                  <a href='http://localhost:3000/'>Home</a>
+                </div>
         </div>
 
+
+        <div className='log'>
+            <h2 className=''>REGISTER</h2>
+            </div>
+
+      <div className="formCon">
         <div className="innerFormContainer">
           <form onSubmit={formik.handleSubmit}>
-            <div>
+          
+            <div className="">
               <div className="flex">
-                <div>
-                  <label htmlFor="">Username</label>
-                </div>
-
-                <div>
-                  {formik.touched.username && formik.errors.username ? (
-                    <div className="error">{formik.errors.username}</div>
-                  ) : null}
-                </div>
-              </div>
-
-              <input
-                type="text"
-                placeholder=""
-                className="input"
-                value={formik.values.username}
-                name="username"
-                onBlur={formik.handleBlur}
-                onChange={formik.handleChange}
-              />
-            </div>{" "}
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <div>
-              <div className="flex">
-                <div>
-                  <label htmlFor="nameInput">Email Address</label>
-                </div>
 
                 <div>
                   {formik.touched.email && formik.errors.email ? (
@@ -123,214 +90,52 @@ const Register = () => {
 
               <input
                 type="email"
-                placeholder=""
-                className="input"
+                placeholder="Enter email address"
+                className="inputDiv"
                 value={formik.values.email}
                 name="email"
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
               />
-            </div>{" "}
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <div>
+            </div>{" "} 
+            
+            
+            <div className="">
               <div className="flex">
-                <div>
-                  <label htmlFor="nameInput">Password</label>
-                </div>
 
                 <div>
-                  {formik.touched.password && formik.errors.password ? (
-                    <div className="error">{formik.errors.password}</div>
-                  ) : null}
-                </div>
-              </div>
-
-              <input
-                type="password"
-                placeholder=""
-                className="input"
-                value={formik.values.password}
-                name="password"
-                onBlur={formik.handleBlur}
-                onChange={formik.handleChange}
-              />
-            </div>{" "}
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <div>
-              <div className="flex">
-                <div>
-                  <label htmlFor="nameInput">Confirm Password </label>
-                </div>
-
-                <div>
-                  {formik.touched.confirmPassword &&
-                  formik.errors.confirmPassword ? (
-                    <div className="error">{formik.errors.confirmPassword}</div>
+                  {formik.touched.username && formik.errors.username ? (
+                    <div className="error">{formik.errors.username}</div>
                   ) : null}
                 </div>
               </div>
 
               <input
                 type="text"
-                placeholder=""
-                className="input"
-                value={formik.values.confirmPassword}
-                name="confirmPassword"
+                placeholder="Enter username"
+                className="inputDiv"
+                value={formik.values.username}
+                name="username"
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
               />
             </div>{" "}
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <div>
-              <div className="flex">
-                <div>
-                  <label>Select your Gender</label>
-                </div>
 
-                <div>
-                  {formik.touched.gender && formik.errors.gender ? (
-                    <div className="error">{formik.errors.gender}</div>
-                  ) : null}
-                </div>
-              </div>
-
-              <div className="genderContainer">
-                <div className="radio">
-                  <input
-                    type="radio"
-                    className="inputRadio"
-                    name="gender"
-                    value="male"
-                    checked={formik.values.gender == "male"}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                  />
-                  <label htmlFor="radiolabel" className="radioLabel">
-                    Male
-                  </label>
-                </div>
-
-                <div className="radio">
-                  <input
-                    type="radio"
-                    className="inputRadio"
-                    name="gender"
-                    value="female"
-                    checked={formik.values.gender === "female"}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                  />
-                  <label htmlFor="radioLabel" className="radioLabel">
-                    Female
-                  </label>
-                </div>
-
-                <div className="radio">
-                  <input
-                    type="radio"
-                    className="inputRadio"
-                    name="gender"
-                    value="others"
-                    checked={formik.values.gender === "others"}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                  />
-                  <label htmlFor="radioLabel" className="radioLabel">
-                    Others
-                  </label>
-                </div>
-              </div>
-            </div>
-            <br />
-            <div>
-              <div className="flex">
-                <div>
-                  <label htmlFor="nameInput">Country</label>
-                </div>
-
-                <div>
-                  {formik.touched.country && formik.errors.country ? (
-                    <div className="error">{formik.errors.country}</div>
-                  ) : null}
-                </div>
-              </div>
-
-              <select
-                className="country"
-                value={formik.values.country}
-                name="country"
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                // onChange={(event) => setCountry(event.target.value)}
-              >
-                <option></option>
-                <option>American</option>
-                <option>Afghanistan</option>
-                <option>Canada</option>
-                <option>Cameroon</option>
-                <option>New York</option>
-                <option>Ghana</option>
-                <option>Kenya</option>
-                <option>Niger</option>
-                <option>Nigeria</option>
-                <option>New Zealand</option>
-                <option>Sweden</option>
-                <option>Nairobi</option>
-                <option>Iran</option>
-                <option>Saudi Arabia</option>
-                <option>India</option>
-                <option>United Kingdom</option>
-                <option>Zimbabwe</option>
-              </select>
-            </div>{" "}
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <div>
-              <input type="submit" value="Submit" className="submitButton" />
+            
+            <div className="buttonContainer">
+              <button className="theButton" onclick={confirmOTPPage}>
+                Send OTP</button>
               <br />
               <br />
             </div>
-            <div>
-              {/* <button className="googleButton">Continue with Google</button> */}
-              <GoogleLogin
-                clientId={clientId}
-                buttonText="Continue with Google"
-                onSuccess={onSuccess}
-                onFailure={onFailure}
-                className="googleButton"
-                cookiePolicy={"single_host_origin"}
-                isSignedIn={true}
-              />
-            </div>
+           
           </form>
         </div>
       </div>
 
-      <div className="secondDiv">
-        <img
-          src={require("../../assets/images/happy girl 1.jpeg")}
-          className="happyGirl"
-        />
-
-        <div>
-          <h2 className="converse">
-            {" "}
-            <span style={{ color: "#9FFEF3" }}> Join Converse,</span> where
-            conversations come alive. Sign up now and unlock a world of
-            limitless communication, possibilities and connections"
-          </h2>
-        </div>
-      </div>
     </div>
   );
 };
 
 export default Register;
 
-{
-  /* <Carousel>
-      <img src={require("../../assets/images/chat 1.jpg")} className="carousel-image"/>
-      <img src={require("../../assets/images/chat 2.jpg")} className="carousel-image"/>
-      <img src={require("../../assets/images/chat 1.jpg")}  className="carousel-image"/>
-      <img src={require("../../assets/images/chat 2.jpg")}  className="carousel-image"/>
-  </Carousel> */
-}

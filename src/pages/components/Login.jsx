@@ -1,6 +1,7 @@
 import React from 'react'
 import "../styles/Login.css";
 import { useFormik } from "formik";
+import Picture from "../../assets/images/converseFive.jpg";
 
 const Login = () => {
 
@@ -33,11 +34,34 @@ const Login = () => {
 
   return (
     <div className='mainContainer'>
+
+<div className="upperLayer">
+            <div className="converseText">
+                <div>
+                <img src={Picture} alt="Not found" className="converseLogo"></img>
+                </div>
+               
+               <div>
+               <h1 className="converse">CONVERSE</h1>
+               </div>
+            </div>
+
+            <div className="login">
+                <div className='home'>
+                  <a href='http://localhost:3001/'>Home</a>
+                </div>
+                <div className='register'> 
+                  <a href='http://localhost:3001/register'>Register</a>
+                </div>
+            </div>
+        </div>
+
         <div className='loginContainer'>
             
             <div className='loginText'>
-            <h1 className='h1'>LOGIN</h1>
+            <h2 className='h1'>LOGIN NOW</h2>
             </div>
+            <br /><br />
 
             <div>   
             <div>
@@ -47,19 +71,17 @@ const Login = () => {
                 </div>
               
               <div>
-                <div>
-                <label htmlFor=''>Username</label>
-                </div>
 
               <input
                 type="text"
-                placeholder=""
+                placeholder="Enter username"
                 className="input"
                 value={formik.values.username}
                 name="username"
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
               />
+              <br /><br /><br />
             </div>{" "}
             </div>
 
@@ -71,19 +93,17 @@ const Login = () => {
                 </div>
               
               <div>
-              <div>
-                <label htmlFor=''>Password</label>
-                </div>
 
               <input
                 type="password"
-                placeholder=""
+                placeholder="Enter password"
                 className="input"
                 value={formik.values.password}
                 name="password"
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
               />
+              
             </div>{" "}
             </div>
 
@@ -95,8 +115,9 @@ const Login = () => {
             </div>
 
             <div>
-                <button>LOGIN</button>
+                <button>CONTINUE</button>
             </div>
+            <br />
 
         </div>
     </div>

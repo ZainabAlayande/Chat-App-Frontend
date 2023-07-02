@@ -1,0 +1,21 @@
+.container {
+    margin-top: 10%;
+    width: 50%;
+    height: 500%;
+    margin-left: 25%;
+}
+
+.buttonContainer{
+    margin-top: 5%;
+}
+
+.markSign {
+    width: 200px;
+    height: 200px;
+}
+
+.ptag {
+    font-weight: 700;
+    font-size: larger;
+}
+
